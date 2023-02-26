@@ -29,6 +29,11 @@ let month = months[now.getMonth()];
 let date = now.getDate();
 let hour = now.getHours();
 let minutes = now.getMinutes();
+function formatDate(timestamp) {
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+}
 
 h3.innerHTML = `${day}, ${month} ${date} ${hour}:${minutes}`;
 
@@ -70,7 +75,6 @@ function showTemp(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
- 
 }
 
 function submit(event) {
