@@ -17,6 +17,18 @@
   position: relative;
   top: 10px;
 }
+.form {
+  width: 300px;
+  height: 40px;
+}
+.search-form {
+  text-align: center;
+}
+.button {
+  position: relative;
+  top: -2px;
+}
+
 h1 {
   margin-bottom: 0;
   font-size: 30px;
@@ -37,4 +49,7 @@ li {
 }
 small {
   color: #5a6276;
+}
+h3 {
+  font-size: 15px;
 }
