@@ -19,11 +19,29 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
+          <form action="search-form" id="search-form">
+            <input
+              type="text"
+              class="form"
+              placeholder="Enter a City"
+              autofocus="on"
+              autocomplete="off"
+              id="city-search"
+            />
+            <span class="button">
+              <button type="submit" class="btn btn-primary">
+                Search
+              </button></span
+            >
+            <button class="btn btn-success" id="current-location">
+              Current
+            </button>
+          </form>
           <h1 id="city">New York City</h1>
           <div class="row">
             <div class="col">
               <ul>
-                <li>Last updated: <span id="date"></span></li>
+                <li><h3></h3> <span></span></li>
                 <li>
                   Precipitation:
                   <span class="precipitation" id="precipitation"> </span>
@@ -39,15 +57,16 @@
                   alt=""
                   id="icon"
                 />
-              
-              <span class="temperature" id="temp"> 19</span
-              ><span class="units">
-                <a href="#" id="celsius">°C</a> |
-                <a href="#" id="fahrenheit">°F</a>
-              </span>
-              <br />
-              <span class="description" id="description"></span>
-            </div></div>
+
+                <span class="temperature" id="temp"> 19</span
+                ><span class="units">
+                  <a href="#" id="celsius">°C</a> |
+                  <a href="#" id="fahrenheit">°F</a>
+                </span>
+                <br />
+                <span class="description" id="description"></span>
+              </div>
+            </div>
           </div>
         </div>
         <small>
