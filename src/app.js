@@ -30,10 +30,9 @@ let month = months[now.getMonth()];
 let date = now.getDate();
 let hour = now.getHours();
 let minutes = now.getMinutes();
-function formatDate(timestamp) {
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+
+if (minutes < 10) {
+  minutes = `0${minutes}`;
 }
 
 h3.innerHTML = `${day}, ${month} ${date} ${hour}:${minutes}`;
@@ -49,29 +48,32 @@ let searchBar = document.querySelector("#search-form");
 searchBar.addEventListener("submit", search);
 
 //Temperature Converison
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+let temp = document.querySelector("#temp");
+let celsiusButton = document.querySelector("#celsius");
+let fahrenheitButton = document.querySelector("#fahrenheit");
 
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+function tempConverter(event) {
+  event.preventDefault();
+
+  let button = event.target;
+  let temperature = parseInt(temp.innerHTML);
+  let outputTemp;
+
+  if (button === celsiusButton) {
+    outputTemp = ((temperature - 32) * 5) / 9;
+    celsiusButton.classList.add("active");
+    fahrenheitButton.classList.remove("active");
+  } else {
+    outputTemp = (temperature * 9) / 5 + 32;
+    fahrenheitButton.classList.add("active");
+    celsiusButton.classList.remove("active");
+  }
+
+  temp.innerHTML = Math.round(outputTemp);
 }
 
-function convertToCelsius(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", convertToCelsius);
+celsiusButton.addEventListener("click", tempConverter);
+fahrenheitButton.addEventListener("click", tempConverter);
 
 //Displaying Temperature, humidity, wind & description
 function showTemp(response) {
