@@ -75,6 +75,15 @@ function tempConverter(event) {
 celsiusButton.addEventListener("click", tempConverter);
 fahrenheitButton.addEventListener("click", tempConverter);
 
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/oncecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //Displaying Temperature, humidity, wind & description
 function showTemp(response) {
   document.querySelector("#city").innerHTML = response.data.name;
@@ -92,6 +101,7 @@ function showTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function submit(event) {
@@ -136,15 +146,12 @@ function formatDay(timestamp) {
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = `<div class="row">`;
+let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         ` 
-  
-              
               <div class="col-2">
                <div class="forecast-date">${formatDay(forecastDay.dt)}</div> 
                 <img src="http://openweathermap.org/img/wn/${
@@ -159,8 +166,6 @@ function displayForecast(response) {
                   )}°</span>
                 </div>
               </div>
-             
-           
             `;
     }
   });
@@ -168,14 +173,5 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function getForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "96ad27349a64ea1dcdfbe6f4d458c085";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/oncecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(displayForecast);
-}
-
 //Default City
 citySearcher("New York City");
-displayForecast();
