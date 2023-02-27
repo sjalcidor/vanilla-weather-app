@@ -28,7 +28,9 @@
   position: relative;
   top: -2px;
 }
-
+.source {
+  color: black;
+}
 h1 {
   margin-bottom: 0;
   font-size: 30px;
@@ -52,4 +54,17 @@ small {
 }
 h3 {
   font-size: 15px;
+}
+.weather-forecast {
+  text-align: center;
+}
+.weather-forecast-temp {
+  color: #006ec5;
+ 
+}
+.weather-temp-max {
+  font-weight: bold;
+}
+.forecast-date{
+  font-size: 20px;
 }
