@@ -124,5 +124,35 @@ currentLocation.addEventListener("click", getCurrentLocation);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submit);
 
+//Display Forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+  
+              
+              <div class="col-2">
+               <div class="forecast-date">${day}</div> 
+                <img src="https://ssl.gstatic.com/onebox/weather/48/sunny_s_cloudy.png" alt="">
+                <div class="weather-forecast-temp">
+                  <span class="weather-temp-max">72° </span
+                  ><span class="weather-temp-min">52°</span>
+                </div>
+              </div>
+             
+           
+            `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 //Default City
 citySearcher("New York City");
+displayForecast();
