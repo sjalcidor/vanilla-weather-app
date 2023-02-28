@@ -58,13 +58,17 @@ h3 {
 .weather-forecast {
   text-align: center;
 }
-.weather-forecast-temp {
-  color: #006ec5;
- 
-}
 .weather-temp-max {
   font-weight: bold;
 }
 .forecast-date{
   font-size: 20px;
+}
+.weather-forecast-temperature-max{
+  font-weight: bold;
+  color: #006ec5;
+}
+.weather-forecast-temperature-min{
+  color: #006ec5;
+  font-weight: light;
 }
